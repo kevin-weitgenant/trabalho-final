@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "JavaCC, Compile, and Run Lugosi",
+      "type": "shell",
+      "command": "bash", // Use 'bash' for Unix-like systems, or 'cmd' for Windows
+      "args": [
+        "-c",
+        "javacc Lugosi.jj && javac *.java && java Lugosi teste.lug"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
