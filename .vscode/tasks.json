@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile and Run",
+      "type": "shell",
+      "command": "rm -f Lugosi.jj && cp Lugosi.java Lugosi.jj && javacc Lugosi.jj && javac *.java && java Lugosi programa_exemplo.lug",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
