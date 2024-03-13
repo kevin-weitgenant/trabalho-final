@@ -1,16 +1,19 @@
-// importar as classes da árvore sintática:
-import "../ast.*";
-
 PARSER_BEGIN(Lugosi)
-import java.io.*;
-public class Lugosi {
-  public static void main(String args[]) throws ParseException,IOException {
-    Lugosi analisador = new Lugosi(new FileInputStream(args[0]));
-    analisador.Lugosi();
-  }
-}
 
-PARSER_END(Lugosi)
+import ast.*;
+import java.io.*;
+import java.text.ParseException;
+
+public class Lugosi {
+  public static void main(String args[]) throws ParseException, IOException {
+    Lugosi parser = new Lugosi(new FileInputStream(args[0]));
+    Prog arvore = parser.Lugosi();
+    System.out.println(arvore.toString());
+  }
+
+  
+}
+  PARSER_END(Lugosi)
 
 SKIP :
 {
