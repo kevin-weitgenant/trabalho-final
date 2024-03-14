@@ -24,28 +24,25 @@ public class Lugosi {
 Prog LUGOSI():
 { 
     Main main; 
-    // ArrayList<Fun> fun = new ArrayList<Fun>(); 
+    ArrayList<Fun> fun = new ArrayList<Fun>(); 
 }
 {
     main = Main() 
-    // fun = FUNC()
-    // { return new Prog(main, fun); }
-    { return new Prog(main);}
+    fun = FUNC()
+    { return new Prog(main, fun); }
+    
 
 }
 
 Main Main(): 
     {
     ArrayList<VarDecl>variavel_list=new ArrayList<VarDecl>();
-    // ArrayList<Comando>comando_list=new ArrayList<Comando>();
+    ArrayList<Comando>comando_list=new ArrayList<Comando>();
     }
 
-  {<VOID><MAIN><ACHAVES>(VarDecl(variavel_list))*<FCHAVES>
-    // <VOID><MAIN><ACHAVES>(VarDecl(variavel_list))*
-    // (Comando(comando_list))*<FCHAVES>
+  {<VOID><MAIN><ACHAVES>(VarDecl(variavel_list))*(Comando(comando_list))*<FCHAVES>
     {
-      return new Main(variavel_list);
-    // return new Main(variavel_list,comando_list);
+      return new Main(variavel_list,comando_list);
     }
   }
 
@@ -62,3 +59,18 @@ Main Main():
   {(t=<FLOAT>|t=<BOOL>|t=<VOID>)
     {return t.image;}
   }
+
+
+
+  ArrayList<Fun> FUNC() :
+{ 
+    ArrayList<Fun> fun = new ArrayList<Fun>(); 
+    String nome; ArrayList<ParamFormalFun> params; 
+    String retorno; 
+    ArrayList<VarDecl> vars; 
+    ArrayList<Comando> body; 
+}
+{
+    (<DEF> retorno = TIPO() nome = <ID>.image "(" params = LISTAARG() ")" "{" vars = VARDECL() body = SEQCOMANDOS() "}" { fun.add(new Fun(nome, params, retorno, vars, body)); })*
+    { return fun; }
+}
